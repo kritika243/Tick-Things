@@ -32,6 +32,10 @@ list_add_button = tkinter.Button(input_frame, text='Add', borderwidth=2, font=my
 list_entry.grid(row=0, column=0)
 list_add_button.grid(row=0, column=1)
 
+# output frame layout
+my_list_box = tkinter.Listbox(output_frame, height=15, width=40, borderwidth=3, font=my_root)
+my_list_box.grid(row=0, column=0)
+
 
 # run the main window loop
 root.mainloop()
