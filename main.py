@@ -1,5 +1,6 @@
 import tkinter
-from tkinter import font 
+from tkinter import font
+from tkinter.constants import END 
 
 #defining window
 root = tkinter.Tk()
@@ -16,6 +17,11 @@ button_color='#e4d2f7'
 root.config(bg=root_color)
 
 # define functions
+def add_item():
+  """ add individual iems to list box """
+  my_list_box.insert(END, list_entry.get())
+  list_entry.delete(0,END)
+
 
 # defining layout
 #creating frames
@@ -29,7 +35,7 @@ button_frame.pack()
 
 # input frame layout
 list_entry = tkinter.Entry(input_frame, width=35, borderwidth=3, font=my_root)
-list_add_button = tkinter.Button(input_frame, text='Add', borderwidth=2, font=my_root, bg=button_color)
+list_add_button = tkinter.Button(input_frame, text='Add', borderwidth=2, font=my_root, bg=button_color, command=add_item)
 list_entry.grid(row=0, column=0, padx=5, pady=5)
 list_add_button.grid(row=0, column=1, padx=5, pady=5, ipadx=2)
 
