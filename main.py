@@ -31,11 +31,13 @@ button_frame.pack()
 list_entry = tkinter.Entry(input_frame, width=35, borderwidth=3, font=my_root)
 list_add_button = tkinter.Button(input_frame, text='Add', borderwidth=2, font=my_root, bg=button_color)
 list_entry.grid(row=0, column=0, padx=5, pady=5)
-list_add_button.grid(row=0, column=1, padx=5, pady=5, ipadx=5)
+list_add_button.grid(row=0, column=1, padx=5, pady=5, ipadx=2)
 
 # output frame layout
+my_scrollbar = tkinter.Scrollbar(output_frame)
 my_list_box = tkinter.Listbox(output_frame, height=13, width=40, borderwidth=3, font=my_root)
 my_list_box.grid(row=0, column=0)
+my_scrollbar.grid(row=0, column=1, sticky='NS')
 
 # Button frame layout
 list_remove_button=tkinter.Button(button_frame, text='Remove Thing', borderwidth=2, font=my_root, bg=button_color)
