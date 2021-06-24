@@ -1,6 +1,6 @@
 import tkinter
 from tkinter import font
-from tkinter.constants import END 
+from tkinter.constants import ANCHOR, END 
 
 #defining window
 root = tkinter.Tk()
@@ -22,6 +22,32 @@ def add_item():
   my_list_box.insert(END, list_entry.get())
   list_entry.delete(0,END)
 
+def remove_item():
+  """ remove the selected item(anchor) from the list box"""
+  my_list_box.delete(ANCHOR)
+
+def clear_all():
+  """delete the whole list"""
+  my_list_box.delete(0, END)
+
+def save_all():
+  """save the list to a txt file"""
+  with open('TickThings.txt', 'w') as f:
+    list_tuple = my_list_box.get(0, END)
+    for item in list_tuple:
+      if item.endswith('\n'):
+        f.write(item)
+      else:
+        f.write(item + "\n")
+
+def open_list():
+  """ open the prvious list if ther's one"""
+  try:
+    with open('TickThings.txt', 'r') as f:
+      for line in f:
+        my_list_box.insert(END, line)
+  except:
+    return
 
 # defining layout
 #creating frames
@@ -48,9 +74,9 @@ my_list_box.grid(row=0, column=0)
 my_scrollbar.grid(row=0, column=1, sticky='NS')
 
 # Button frame layout
-list_remove_button=tkinter.Button(button_frame, text='Remove Thing', borderwidth=2, font=my_root, bg=button_color)
-list_clear_button = tkinter.Button(button_frame, text='Clear All', borderwidth=2, font=my_root, bg=button_color)
-save_button = tkinter.Button(button_frame, text='Save Things', borderwidth=2, font=my_root, bg=button_color)
+list_remove_button=tkinter.Button(button_frame, text='Remove Thing', borderwidth=2, font=my_root, bg=button_color, command=remove_item)
+list_clear_button = tkinter.Button(button_frame, text='Clear All', borderwidth=2, font=my_root, bg=button_color, command=clear_all)
+save_button = tkinter.Button(button_frame, text='Save Things', borderwidth=2, font=my_root, bg=button_color, command=save_all)
 quit_button = tkinter.Button(button_frame, text='Quit', borderwidth=2, font=my_root, bg=button_color, command=root.destroy)
 
 list_remove_button.grid(row=0, column=0, padx=2, pady=10)
@@ -58,6 +84,9 @@ list_clear_button.grid(row=0, column=10, padx=2, pady=10, ipadx=17)
 save_button.grid(row=0, column=20, padx=2, pady=10, ipadx=13)
 quit_button.grid(row=0, column=30, padx=2, pady=10, ipadx=28)
 
+
+# open the previous list if available
+open_list()
 
 # run the main window loop
 root.mainloop()
