@@ -15,6 +15,6 @@ A to do list app where you can
 - Quit the app anytime by clicking on "Quit"
 - Auto-reload: get your previously `saved list` on re-opening the app
 
-###
+### App preview
 
 ![App Screenshot](https://github.com/kritika243/Tick-Things/blob/main/preview.png)
