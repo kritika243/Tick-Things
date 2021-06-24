@@ -41,7 +41,9 @@ list_add_button.grid(row=0, column=1, padx=5, pady=5, ipadx=2)
 
 # output frame layout
 my_scrollbar = tkinter.Scrollbar(output_frame)
-my_list_box = tkinter.Listbox(output_frame, height=13, width=40, borderwidth=3, font=my_root)
+my_list_box = tkinter.Listbox(output_frame, height=13, width=40, borderwidth=3, font=my_root, yscrollcommand=my_scrollbar.set)
+# link scrollbar to listbox
+my_scrollbar.config(command=my_list_box.yview)
 my_list_box.grid(row=0, column=0)
 my_scrollbar.grid(row=0, column=1, sticky='NS')
 
