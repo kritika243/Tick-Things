@@ -14,3 +14,7 @@ A to do list app where you can
 - Clear the whole list by clicking on "Clear All"
 - Quit the app anytime by clicking on "Quit"
 - Auto-reload: get your previously `saved list` on re-opening the app
+
+###
+
+![App Screenshot](https://github.com/kritika243/Tick-Things/blob/main/preview.png)
